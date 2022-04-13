@@ -1,3 +1,20 @@
+
+<?php
+//start the session
+SESSION_START();
+
+//check if the session variables are set or merong laman ang session variables or naga exist sila
+//this is to check naka login ung account or hindi man
+if (isset($_SESSION['ses_username'])===false){
+    header("Location: index.php?logfirst");
+} else if (isset($_REQUEST['logout'])===true){
+    session_destroy();
+    header("Location: index.php?logout");
+}
+
+?>
+
+
 <!doctype html>
                         <html>
                             <head>
@@ -32,13 +49,17 @@ body {
         <div class="bg-white shadow rounded overflow-hidden">
             <div class="px-4 pt-0 pb-4 cover">
                 <div class="media align-items-end profile-head">
-                    <div class="profile mr-3"><img src="images/photo-profile.avif" alt="..." width="150" class="rounded mb-2 img-thumbnail"><a href="#" class="btn btn-outline-dark btn-sm btn-block">Edit Profile</a>
+                    <div class="profile mr-3"><img src="images/PHOTO-1.png" alt="..." width="150" class="rounded mb-2 img-thumbnail">
+                    
+                    <a href="?logout" class="btn btn-outline-dark btn-sm btn-block">Sign Out</a>
 
 
                     </div>
                     <div class="media-body mb-5 text-white">
-                        <h4 class="mt-0 mb-0">Ryan Clifford L. Perez</h4>
-                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>Marinduque PH
+                        <h4 class="mt-0 mb-0"><?php  echo $_SESSION['ses_fullname'];?></h4>
+                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>
+                        
+                        <?php echo $_SESSION['ses_address'];?>
                          </p>
                     </div>
                 </div>
@@ -46,13 +67,13 @@ body {
             <div class="bg-light p-4 d-flex justify-content-end text-center">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">21,150</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Photos</small>
+                        <h5 class="font-weight-bold mb-0 d-block">5,328</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Photos</small>
                     </li>
                     <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">756,450</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
+                        <h5 class="font-weight-bold mb-0 d-block">500,000</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
                     </li>
                     <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">340</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
+                        <h5 class="font-weight-bold mb-0 d-block">250</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
                     </li>
                 </ul>
             </div>
@@ -60,22 +81,22 @@ body {
             <div class="px-4 py-3">
                 <h5 class="mb-0">Expertise </h5>
                 <div class="p-4 rounded shadow-sm bg-light">
-                    <p class="font-italic mb-0">Full-stack Web Developer</p>
+                    <p class="font-italic mb-0">Studied at Marinduque State College</p>
                     <p class="font-italic mb-0">Mobile App Developer</p>
-                    <p class="font-italic mb-0">Photographer/Videographer</p>
+                    <p class="font-italic mb-0">Full-stack Web Developer</p>
                 </div>
             </div>
 
             <div class="py-4 px-4">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h5 class="mb-0">Recent Captures</h5><a href="#" class="btn btn-link text-muted">Show all</a>
+                    <h5 class="mb-0">Tourist Spots in Marinduque</h5><a href="#" class="btn btn-link text-muted">Show all</a>
                 </div>
                 <div class="row">
                     
-                    <div class="col-lg-6 mb-2 pr-lg-1"><img src="images/photo-1.avif" alt="" class="img-fluid rounded shadow-sm"></div>              
-                    <div class="col-lg-6 mb-2 pl-lg-1"><img src="images/photo-2.avif" alt="" class="img-fluid rounded shadow-sm"></div>                
-                    <div class="col-lg-6 pr-lg-1 mb-2"><img src="images/photo-3.avif" alt="" class="img-fluid rounded shadow-sm"></div>
-                    <div class="col-lg-6 pl-lg-1"><img src="images/photo-4.avif" alt="" class="img-fluid rounded shadow-sm"></div>
+                    <div class="col-lg-6 mb-2 pr-lg-1"><img src="images/PHOTO-2.png" alt="" class="img-fluid rounded shadow-sm"></div>              
+                    <div class="col-lg-6 mb-2 pl-lg-1"><img src="images/PHOTO-3.png" alt="" class="img-fluid rounded shadow-sm"></div>                
+                    <div class="col-lg-6 pr-lg-1 mb-2"><img src="images/PHOTO-4.png" alt="" class="img-fluid rounded shadow-sm"></div>
+                    <div class="col-lg-6 pl-lg-1"><img src="images/PHOTO-5.png" alt="" class="img-fluid rounded shadow-sm"></div>
                 </div> 
             </div>
 
